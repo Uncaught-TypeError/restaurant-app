@@ -24,10 +24,7 @@
                                 Image
                             </th>
                             <th scope="col" class="px-6 py-3">
-                                Action 1
-                            </th>
-                            <th scope="col" class="px-6 py-3">
-                                Action 2
+                                Action
                             </th>
                         </tr>
                     </thead>
@@ -38,22 +35,22 @@
                                     {{ $category->name }}
                                 </th>
                                 <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                    <img src="{{ Storage::url($category->image) }}" class="w-16 h-16 rounded">
+                                    <img src="{{ Storage::url($category->image) }}" class="h-20 rounded">
                                 </th>
                                 <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                     {{ $category->description }}
                                 </th>
                                 <th class="px-6 py-4">
-                                    <a href="{{ route('admin.categories.edit', $category->id) }}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                                </th>
-                                <th scope="row" class="px-6 py-4">
-                                    <form method="POST"
-                                    onsubmit="return confirm('Are you sure?');"
-                                    enctype="multipart/form-data" action="{{ route('admin.categories.destroy', $category->id) }}">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Delete</button>
-                                    </form>
+                                    <div class="flex space-x-2">
+                                        <a href="{{ route('admin.categories.edit', $category->id) }}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                                        <form method="POST"
+                                        onsubmit="return confirm('Are you sure?');"
+                                        enctype="multipart/form-data" action="{{ route('admin.categories.destroy', $category->id) }}">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Delete</button>
+                                        </form>
+                                    </div>
                                 </th>
                             </tr>
                         @endforeach
