@@ -14,16 +14,28 @@
                 <form>
                     <div class="space-y-12">
                     <div class="border-b border-gray-900/10 pb-12">
-                        <h2 class="text-base font-semibold leading-7 text-gray-900">New Category</h2>
+                        <h2 class="text-base font-semibold leading-7 text-gray-900">New Menu</h2>
                         <p class="mt-1 text-sm leading-6 text-gray-600">This new category will be displayed publicly so be careful what you create.</p>
 
                         <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
                         <div class="sm:col-span-4">
-                            <label for="catname" class="block text-sm font-medium leading-6 text-gray-900">Category Name</label>
+                            <label for="catname" class="block text-sm font-medium leading-6 text-gray-900">Item Name</label>
                             <div class="mt-2">
                             <div class="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
                                 <input type="text" name="catname" id="catname" autocomplete="catname" class="block flex-1 border-0 bg-transparent py-1.5 pl-2 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" placeholder="Breakfast,etc.">
                             </div>
+                            </div>
+                        </div>
+
+                        <div class="col-span-full">
+                            <div class="sm:col-span-4">
+                                <label for="price" class="block text-sm font-medium leading-6 text-gray-900">Price</label>
+                                <div class="relative mt-2 rounded-md shadow-sm">
+                                    <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+                                        <span class="text-gray-500 sm:text-sm">$</span>
+                                    </div>
+                                    <input type="text" name="price" id="price" class="block w-52 rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" placeholder="0.00" />
+                                </div>
                             </div>
                         </div>
 
@@ -33,6 +45,22 @@
                             <textarea id="desc" name="desc" rows="3" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"></textarea>
                             </div>
                             <p class="mt-3 text-sm leading-6 text-gray-600">Write a few sentences about the category.</p>
+                        </div>
+
+                        <div class="col-span-full">
+                            <label for="categories" class="block text-sm font-medium leading-6 text-gray-900">Categories</label>
+                            <div class="mt-2">
+                                <select multiple id="categories" class="bg-gray-50 border
+                                border-gray-300 text-gray-900 text-sm rounded-lg
+                                focus:ring-indigo-500 focus:border-indigo-500 block w-96 p-2.5
+                                dark:border-gray-600 dark:placeholder-gray-400
+                                dark:focus:ring-indigo-500 dark:focus:border-indigo-500">
+                                @foreach ($categories as $category)
+                                    <option value="">{{ $category->name }}</option>
+                                @endforeach
+                                </select>
+                            </div>
+                            <p class="mt-3 text-sm leading-6 text-gray-600">Choose the category concerning with the menu.</p>
                         </div>
 
                         <div class="col-span-full">

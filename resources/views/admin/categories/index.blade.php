@@ -18,10 +18,10 @@
                                 Category name
                             </th>
                             <th scope="col" class="px-6 py-3">
-                                Description
+                                Image
                             </th>
                             <th scope="col" class="px-6 py-3">
-                                Image
+                                Description
                             </th>
                             <th scope="col" class="px-6 py-3">
                                 Action
