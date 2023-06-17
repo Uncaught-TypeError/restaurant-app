@@ -11,7 +11,7 @@ class Category extends Model
 
     protected $fillable= ['name','image','description'];
 
-    public function menu()
+    public function menus()
     {
         // pivot table
         return $this->belongsToMany(Menu::class, 'category_menu');
