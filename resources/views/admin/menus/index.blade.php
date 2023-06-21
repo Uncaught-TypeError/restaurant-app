@@ -37,16 +37,16 @@
                                 <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                     {{ $menu->name }}
                                 </th>
-                                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                <td scope="row" class="px-6 py-4">
                                     <img src="{{ Storage::url($menu->image) }}" class="h-20 rounded">
-                                </th>
-                                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                </td>
+                                <td scope="row" class="px-6 py-4">
                                     {{ $menu->description }}
-                                </th>
-                                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                </td>
+                                <td scope="row" class="px-6 py-4">
                                     {{ $menu->price }} $
-                                </th>
-                                <th class="px-6 py-4">
+                                </td>
+                                <td class="px-6 py-4">
                                     <div class="flex space-x-2">
                                         <a href="{{ route('admin.menus.edit', $menu->id) }}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
                                         <form method="POST"
@@ -57,7 +57,7 @@
                                             <button type="submit" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Delete</button>
                                         </form>
                                     </div>
-                                </th>
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>

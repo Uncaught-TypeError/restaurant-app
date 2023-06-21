@@ -15,16 +15,16 @@
                     <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                         <tr>
                             <th scope="col" class="px-6 py-3">
-                                Product name
+                                Table name
                             </th>
                             <th scope="col" class="px-6 py-3">
-                                Color
+                                Guest Number
                             </th>
                             <th scope="col" class="px-6 py-3">
-                                Category
+                                Status
                             </th>
                             <th scope="col" class="px-6 py-3">
-                                Price
+                                Location
                             </th>
                             <th scope="col" class="px-6 py-3">
                                 Action
@@ -32,23 +32,34 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
-                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                Apple MacBook Pro 17"
-                            </th>
-                            <td class="px-6 py-4">
-                                Silver
-                            </td>
-                            <td class="px-6 py-4">
-                                Laptop
-                            </td>
-                            <td class="px-6 py-4">
-                                $2999
-                            </td>
-                            <td class="px-6 py-4">
-                                <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                            </td>
-                        </tr>
+                        @foreach ($tables as $table)
+                            <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
+                                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                    {{ $table->name }}
+                                </th>
+                                <td class="px-6 py-4">
+                                    {{ $table->guest_number }}
+                                </td>
+                                <td class="px-6 py-4">
+                                    {{ $table->status->name }}
+                                </td>
+                                <td class="px-6 py-4">
+                                    {{ $table->location->name }}
+                                </td>
+                                <td class="px-6 py-4">
+                                    <div class="flex space-x-2">
+                                        <a href="{{ route('admin.tables.edit', $table->id) }}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                                        <form method="POST"
+                                        onsubmit="return confirm('Are you sure?');"
+                                        enctype="multipart/form-data" action="{{ route('admin.tables.destroy', $table->id) }}">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Delete</button>
+                                        </form>
+                                    </div>
+                                </td>
+                            </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>

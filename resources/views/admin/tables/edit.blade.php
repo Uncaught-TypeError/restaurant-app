@@ -11,8 +11,9 @@
                 <a href="{{ route('admin.tables.index') }}" class="py-2 hover:text-indigo-700 text-indigo-500">Back</a>
             </div>
             <div class="m-2 p-2">
-                <form method="POST" enctype="multipart/form-data" action="{{ route('admin.tables.store') }}">
+                <form method="POST" enctype="multipart/form-data" action="{{ route('admin.tables.update', $table->id) }}">
                     @csrf
+                    @method('PUT')
                     <div class="space-y-12">
                         <div class="border-b border-gray-900/10 pb-12">
                             <h2 class="text-base font-semibold leading-7 text-gray-900">New Table</h2>
@@ -23,7 +24,7 @@
                                 <label for="name" class="block text-sm font-medium leading-6 text-gray-900">Table Name</label>
                                 <div class="mt-2">
                                     <div class="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
-                                        <input type="text" name="name" id="name" autocomplete="name" class="block flex-1 border-0 bg-transparent py-1.5 pl-2 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" placeholder="T-1, etc.">
+                                        <input type="text" name="name" value="{{ $table->name }}" id="name" autocomplete="name" class="block flex-1 border-0 bg-transparent py-1.5 pl-2 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" placeholder="T-1, etc.">
                                     </div>
                                 </div>
                                 @error('name')
@@ -35,7 +36,7 @@
                                 <label for="guest_number" class="block text-sm font-medium leading-6 text-gray-900">Guest Number</label>
                                 <div class="mt-2">
                                     <div class="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
-                                        <input type="number" name="guest_number" id="guest_number" autocomplete="guest_number" class="block flex-1 border-0 bg-transparent py-1.5 pl-2 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" placeholder="0">
+                                        <input type="number" value="{{ $table->guest_number }}" name="guest_number" id="guest_number" autocomplete="guest_number" class="block flex-1 border-0 bg-transparent py-1.5 pl-2 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" placeholder="0">
                                     </div>
                                 </div>
                                 @error('guest_number')
@@ -49,7 +50,7 @@
                                     <select id="status" class="rounded-md bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-96 p-2.5  dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500" name="status">
                                         <option>Choose the status</option>
                                         @foreach (App\Enums\TableStatus::cases() as $status)
-                                            <option value="{{ $status->value }}">{{ $status->name }}</option>
+                                            <option value="{{ $status->value }}" @selected($table->status->value == $status->value)>{{ $status->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -79,7 +80,7 @@
                                     <select id="location" class="rounded-md bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-96 p-2.5  dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500" name="location">
                                         <option>Choose the location</option>
                                         @foreach (App\Enums\TableLocation::cases() as $location)
-                                            <option value="{{ $location->value }}">{{ $location->name }}</option>
+                                            <option value="{{ $location->value }}" @selected($table->location->value == $location->value)>{{ $location->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>

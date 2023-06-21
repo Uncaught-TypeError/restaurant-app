@@ -28,6 +28,9 @@
                                     value="{{ $menu->name }}">
                                 </div>
                             </div>
+                            @error('name')
+                                <div class="text-sm text-red-400 mt-1">{{ $message }}</div>
+                            @enderror
                         </div>
 
                         <div class="col-span-full">
@@ -40,6 +43,9 @@
                                     <input type="text" value="{{ $menu->price }}" name="price" id="price" class="block w-52 rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" placeholder="0.00" />
                                 </div>
                             </div>
+                            @error('price')
+                                <div class="text-sm text-red-400 mt-1">{{ $message }}</div>
+                            @enderror
                         </div>
 
                         <div class="col-span-full">
@@ -48,6 +54,9 @@
                             <textarea id="description" name="description" rows="3" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">{{ $menu->description }}</textarea>
                             </div>
                             <p class="mt-3 text-sm leading-6 text-gray-600">Write a few sentences about the item.</p>
+                            @error('description')
+                                <div class="text-sm text-red-400 mt-1">{{ $message }}</div>
+                            @enderror
                         </div>
 
                         <div class="col-span-full">
@@ -64,6 +73,9 @@
                                 </select>
                             </div>
                             <p class="mt-3 text-sm leading-6 text-gray-600">Choose the category concerning with the item.</p>
+                            @error('categories')
+                                <div class="text-sm text-red-400 mt-1">{{ $message }}</div>
+                            @enderror
                         </div>
 
                         <div class="col-span-full">
@@ -87,6 +99,9 @@
                             <div class="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10">
                                 <img src="{{ Storage::url($menu->image) }}" class="h-full">
                             </div>
+                            @error('image')
+                                <div class="text-sm text-red-400 mt-1">{{ $message }}</div>
+                            @enderror
                         </div>
                         </div>
                     </div>

@@ -24,17 +24,28 @@
                             <label for="name" class="block text-sm font-medium leading-6 text-gray-900">Category Name</label>
                             <div class="mt-2">
                             <div class="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
-                                <input type="text" name="name" value="{{ $category->name }}" id="name"  autocomplete="off" class="block flex-1 border-0 bg-transparent py-1.5 pl-2 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" placeholder="Breakfast,etc.">
+                                <input type="text" name="name" value="{{ $category->name }}" id="name"  autocomplete="off" class="block flex-1
+                                border-0 bg-transparent py-1.5 pl-2 text-gray-900 placeholder:text-gray-400 focus:ring-0
+                                sm:text-sm sm:leading-6 @error('name') border-red-400 @enderror" placeholder="Breakfast,etc.">
                             </div>
                             </div>
+                            @error('name')
+                                <div class="text-sm text-red-400 mt-1">{{ $message }}</div>
+                            @enderror
                         </div>
 
                         <div class="col-span-full">
                             <label for="description" class="block text-sm font-medium leading-6 text-gray-900">Description</label>
                             <div class="mt-2">
-                            <textarea id="description" name="description" rows="3" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">{{ $category->description }}</textarea>
+                            <textarea id="description" name="description" rows="3" class="block w-full rounded-md border-0 py-1.5
+                            text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300
+                            placeholder:text-gray-400 focus:ring-2 focus:ring-inset
+                            focus:ring-indigo-600 sm:text-sm sm:leading-6 @error('description') border-red-400 @enderror">{{ $category->description }}</textarea>
                             </div>
                             <p class="mt-3 text-sm leading-6 text-gray-600">Write a few sentences about the category.</p>
+                            @error('description')
+                                <div class="text-sm text-red-400 mt-1">{{ $message }}</div>
+                            @enderror
                         </div>
 
                         <div class="col-span-full">
@@ -47,7 +58,7 @@
                                 <div class="mt-4 flex text-sm leading-6 text-gray-600">
                                 <label for="image" class="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500">
                                     <span>Upload a file</span>
-                                    <input id="image" name="image" type="file" class="sr-only">
+                                    <input id="image" name="image" type="file" class="sr-only @error('image') border-red-400 @enderror">
                                 </label>
                                 <p class="pl-1">or drag and drop</p>
                                 </div>
@@ -58,6 +69,9 @@
                             <div class="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10">
                                 <img src="{{ Storage::url($category->image) }}" class="h-full">
                             </div>
+                            @error('image')
+                                <div class="text-sm text-red-400 mt-1">{{ $message }}</div>
+                            @enderror
                         </div>
                         </div>
                     </div>
