@@ -63,8 +63,6 @@ class TableController extends Controller
     public function update(TableStoreRequest $request, Table $table)
     {
         $table->update($request->validated());
-
-
         return to_route('admin.tables.index')->with('success', 'Table updated successfully');
     }
 

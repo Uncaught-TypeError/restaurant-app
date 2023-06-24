@@ -20,20 +20,13 @@ class DateBetween implements ValidationRule
      *
      * @param  \Closure(string): \Illuminate\Translation\PotentiallyTranslatedString  $fail
      */
-    public function validate(string $attribute, mixed $value, Closure $fail): void
-    {
-        //
-    }
-    public function passes($attribute, $value)
+    public function validate(string $attribute, $value, Closure $fail): void
     {
         $pickupDate = Carbon::parse($value);
-        $lastDate = Carbon::now()->addWeek();
+        // $lastDate = Carbon::now()->addWeek();
 
-        return ($value >= now() && $value <= $lastDate);
-    }
-
-    public function message()
-    {
-        return 'Please choose a date between a week from now.';
+        if ($pickupDate->isPast()) {
+            $fail('Please choose a date from today onwards.');
+        }
     }
 }

@@ -40,14 +40,13 @@ class ReservationController extends Controller
             return back()->with('warning',  'Please choose the table based on guests');
         }
         $request_date = Carbon::parse($request->res_date);
-        // foreach($table->reservations as $res)
-        // {
-        //     if($res->res_date->format('Y-m-d') == $request_date->format('Y-m-d'))
-        //     {
-        //         return back()->with('warning',  'This table is reserved for this date');
-        //     }
-        // }
-        // Reservation::create($request->validated());
+        foreach ($table->reservations as $res) {
+            $resDate = Carbon::parse($res->res_date);
+            if ($resDate->format('Y-m-d') == $request_date->format('Y-m-d')) {
+                return back()->with('warning', 'This table is reserved for this date');
+            }
+        }
+        Reservation::create($request->validated());
         return to_route('admin.reservation.index')->with('success', 'Reservation created successfully');
     }
 
@@ -62,24 +61,39 @@ class ReservationController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Reservation $reservation)
     {
-        //
+        $tables = Table::where('status', TableStatus::Avaliable)->get();
+        return view('admin.reservations.edit',compact('reservation', 'tables'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(ReservationStoreRequest $request, Reservation $reservation)
     {
-        //
+        $table = Table::findOrFail($request->table_id);
+        if ($request->guest_number > $table->guest_number){
+            return back()->with('warning',  'Please choose the table based on guests');
+        }
+        $request_date = Carbon::parse($request->res_date);
+        foreach ($table->reservations as $res) {
+            $resDate = Carbon::parse($res->res_date);
+            if ($resDate->format('Y-m-d') == $request_date->format('Y-m-d')) {
+                return back()->with('warning', 'This table is reserved for this date');
+            }
+        }
+        $reservation->update($request->validated());
+        return to_route('admin.reservation.index')->with('success', 'Reservation updated successfully');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Reservation $reservation)
     {
-        //
+        $reservation->table()->delete();
+        $reservation->delete();
+        return to_route('admin.reservation.index')->with('danger', 'Reservation deleted successfully');
     }
 }
