@@ -16,4 +16,5 @@ class Category extends Model
         // pivot table
         return $this->belongsToMany(Menu::class, 'category_menu');
     }
+
 }
