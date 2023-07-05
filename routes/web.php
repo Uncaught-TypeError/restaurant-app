@@ -23,13 +23,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [WelcomeController::class, 'index']);
+// Route::get('/', [WelcomeController::class, 'index']);
+
+Route::get('/', [WelcomeController::class, 'index'])->name('welcome');
 
 Route::get('/categ', [FrontendCategoryController::class, 'index'])->name('categories.index');
 Route::get('/categ/{category}', [FrontendCategoryController::class, 'show'])->name('categories.show');
 Route::get('/menus', [FrontendMenuController::class, 'index'])->name('menus.index');
 Route::get('/reservation/step-one', [FrontendReservationController::class, 'stepOne'])->name('reservations.step.one');
+Route::post('/reservation/step-one', [FrontendReservationController::class, 'storestepOne'])->name('reservations.store.step.one');
+Route::post('/reservation/step-two', [FrontendReservationController::class, 'storestepTwo'])->name('reservations.store.step.two');
 Route::get('/reservation/step-two', [FrontendReservationController::class, 'stepTwo'])->name('reservations.step.two');
+Route::get('/thankyou', [WelcomeController::class, 'thankyou'])->name('thankyou');
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');

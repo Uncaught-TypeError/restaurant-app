@@ -77,7 +77,8 @@ class ReservationController extends Controller
             return back()->with('warning',  'Please choose the table based on guests');
         }
         $request_date = Carbon::parse($request->res_date);
-        foreach ($table->reservations as $res) {
+        $reservations = $table->reservations()->where('id', '!=', $reservation->id)->get();
+        foreach ($reservations as $res) {
             $resDate = Carbon::parse($res->res_date);
             if ($resDate->format('Y-m-d') == $request_date->format('Y-m-d')) {
                 return back()->with('warning', 'This table is reserved for this date');
@@ -92,7 +93,6 @@ class ReservationController extends Controller
      */
     public function destroy(Reservation $reservation)
     {
-        $reservation->table()->delete();
         $reservation->delete();
         return to_route('admin.reservation.index')->with('danger', 'Reservation deleted successfully');
     }
