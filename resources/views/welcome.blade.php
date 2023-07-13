@@ -86,6 +86,7 @@
             </div>
         </div>
     </section>
+    @if($specials)
     <section class="bg-white dark:bg-gray-900">
         <div class="dark:text-white flex flex-row justify-center items-center p-3 text-4xl pt-10">
             <span>Today's Speciality</span>
@@ -118,6 +119,7 @@
             @endforeach
         </div>
     </section>
+    @endif
     <section class="bg-gray-50 dark:bg-gray-800">
         <div class="max-w-screen-xl px-4 py-8 mx-auto text-center lg:py-24 lg:px-6">
             <figure class="max-w-screen-md mx-auto">
