@@ -12,10 +12,12 @@ But i have to say, the biggest & complicated project i have created so far.
 ### User Page
 
 ![FireShot Capture 013 - Laravel - 127 0 0 1](https://github.com/Uncaught-TypeError/task-management-app/assets/95492327/4c8fee8a-eb01-4fa7-b67a-f1d6e9cfa29b)
+
 ![FireShot Capture 014 - Laravel - 127 0 0 1](https://github.com/Uncaught-TypeError/task-management-app/assets/95492327/208ba2f2-9157-46d5-9ea1-75192e5fc320)
 
 ### Admin Dashboard
 ![FireShot Capture 016 - Laravel - 127 0 0 1](https://github.com/Uncaught-TypeError/task-management-app/assets/95492327/c1a81bdb-6add-421a-8956-d72578402a1a)
+
 ![FireShot Capture 015 - Laravel - 127 0 0 1](https://github.com/Uncaught-TypeError/task-management-app/assets/95492327/7afe260d-805d-4d95-a719-222235de4140)
 
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
