@@ -45,6 +45,13 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    Route::get('/reservation/step-one', [FrontendReservationController::class, 'stepOne'])->name('reservations.step.one');
+    Route::post('/reservation/step-one', [FrontendReservationController::class, 'storestepOne'])->name('reservations.store.step.one');
+    Route::post('/reservation/step-two', [FrontendReservationController::class, 'storestepTwo'])->name('reservations.store.step.two');
+    Route::get('/reservation/step-two', [FrontendReservationController::class, 'stepTwo'])->name('reservations.step.two');
+    Route::get('/thankyou', [WelcomeController::class, 'thankyou'])->name('thankyou');
+
 });
 
 Route::middleware(['auth', 'admin'])->name('admin.')->prefix('admin')->group(function(){
