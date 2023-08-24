@@ -1,7 +1,6 @@
 # A Restaurant Booking System (A full-stack Project)
 
 User can book for a table, make a reservation, check menu and categories. Admins can create, edit and delete menus, categories and tables. Moreover,  admin can check reservations too. (Too lazy to write proper description as i have projects in hand).
-But i have to say, the biggest & complicated project i have created so far.
 
 ## Insight Images
 
